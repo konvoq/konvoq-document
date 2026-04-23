@@ -3,9 +3,9 @@ import type {Config} from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
 
 const config: Config = {
-  title: 'Konvoq Docs',
+  title: 'Konvoq Documentation',
   tagline: 'Set up, train, and scale your AI support assistant',
-  favicon: 'img/favicon.ico',
+  favicon: 'img/favicon.svg',
   url: 'https://docs.konvoq.com',
   baseUrl: '/',
   organizationName: 'konvoq',
