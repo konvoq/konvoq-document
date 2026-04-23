@@ -1,0 +1,67 @@
+---
+sidebar_position: 4
+title: Scraped Pages
+description: Manage the website pages Konvoq has indexed from your URL crawls.
+---
+
+# Scraped Pages 🌐
+
+Scraped Pages is your audit log for everything Konvoq has read from your website. Every page it crawled shows up here with its status, how many content chunks it produced, and when it was last indexed.
+
+Find it at **[Dashboard → Knowledge → Scraped Pages](https://app.konvoq.com)**.
+
+---
+
+## Page statuses
+
+| Status     | What it means                                        |
+| ---------- | ---------------------------------------------------- |
+| `done`     | ✅ Page indexed successfully — the AI can use it     |
+| `scraping` | 🔄 Konvoq is still crawling the page                 |
+| `indexing` | 🔄 Content extracted, now being converted to vectors |
+| `failed`   | ❌ Something went wrong — see below                  |
+
+### Why does a page fail?
+
+Common reasons:
+
+- The page requires login to access
+- The page has a `robots.txt` rule blocking crawlers
+- The URL returned a 404 or redirect loop
+- The page has very little readable text (mostly images or JavaScript)
+
+Fix the issue and click **Re-scrape** on that individual page.
+
+---
+
+## Re-scraping a single page
+
+When you update content on one page of your site:
+
+1. Find the page in the Scraped Pages list
+2. Click **Re-scrape**
+3. Status changes to `scraping`, then `done`
+
+---
+
+## Re-scraping your entire site
+
+After publishing major content updates (new product launch, pricing change, etc.):
+
+1. Go to **Scraped Pages → Delete All**
+2. Go to **Knowledge → Scrape URLs**
+3. Enter your site URL and start a new crawl
+
+This gives you a completely fresh index with no stale content.
+
+:::warning Delete before re-scraping to save vector quota
+If you re-scrape without deleting old pages first, you'll have duplicate content eating into your vector storage limit. Always delete first, then re-scrape.
+:::
+
+---
+
+## Viewing chunk counts
+
+Each row in the Scraped Pages list shows **how many chunks** that page produced. A typical blog post might produce 5–10 chunks. A large documentation page might produce 20–40.
+
+If a page shows 0 chunks and status `done`, it likely had very little extractable text (e.g. an image-heavy landing page with minimal copy).

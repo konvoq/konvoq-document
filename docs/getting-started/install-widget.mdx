@@ -1,0 +1,93 @@
+---
+sidebar_position: 1
+title: Install the Widget
+description: Add Konvoq to your website in under 5 minutes with a single script tag.
+---
+
+# Install the Widget 🚀
+
+Installing Konvoq is like adding a doorbell to your website — paste one snippet of code and a chat bubble appears, ready to help your visitors.
+
+## Before you start
+
+You'll need two things:
+
+- ✅ An active Konvoq workspace — [sign up at app.konvoq.com](https://app.konvoq.com)
+- ✅ Ability to edit your website's HTML (or access to a tag manager like Google Tag Manager)
+
+---
+
+## Step 1 — Get your Widget Key
+
+Your Widget Key is like a **unique password** that connects the chat bubble on your site to _your_ Konvoq account.
+
+1. Open [Dashboard → Widget → Settings](https://app.konvoq.com)
+2. Copy your **Widget Key** — it looks something like `wk_abc123xyz`
+
+:::tip
+Each workspace has its own key. If you have separate dev and production workspaces, use the right key for each environment.
+:::
+
+---
+
+## Step 2 — Add the snippet to your site
+
+Paste this code **before the closing `</body>` tag** on every page where you want the widget to appear:
+
+```html
+<script>
+  (function (w, d, k) {
+    w.KonvoqKey = k;
+    var s = d.createElement("script");
+    s.src = "https://cdn.konvoq.com/widget.js";
+    s.async = true;
+    d.head.appendChild(s);
+  })(window, document, "YOUR_WIDGET_KEY");
+</script>
+```
+
+Replace `YOUR_WIDGET_KEY` with the key you copied from your dashboard.
+
+:::info Where to put it
+
+- **WordPress** → Appearance → Theme Editor → `footer.php`, just before `</body>`
+- **Webflow** → Project Settings → Custom Code → Footer Code
+- **Shopify** → Online Store → Themes → Edit Code → `theme.liquid`
+- **Google Tag Manager** → New Tag → Custom HTML → fire on All Pages
+  :::
+
+---
+
+## Step 3 — Verify it's working
+
+1. Deploy your changes and open your live website
+2. You should see the **Konvoq chat bubble** in the bottom-right corner
+3. Click it, send a test message, and check **Dashboard → Inbox** — your message should appear there
+
+If the bubble doesn't show up, check:
+
+- Did you replace `YOUR_WIDGET_KEY` with your actual key?
+- Is the snippet placed before `</body>`, not inside `<head>`?
+- Are there any ad blockers or Content Security Policy rules blocking external scripts?
+
+---
+
+## Use separate keys per environment
+
+| Environment     | What to do                                                                            |
+| --------------- | ------------------------------------------------------------------------------------- |
+| **Development** | Create a separate workspace and use its key — keeps test chats out of your real inbox |
+| **Staging**     | Same idea — isolated workspace, isolated key                                          |
+| **Production**  | Your real workspace key goes here                                                     |
+
+---
+
+## Lock the widget to your domain
+
+By default, any site that has your snippet can load your widget. To prevent this, restrict which domains are allowed.
+
+👉 See [Allowed Domains](/widget/allowed-domains) for how to lock it down.
+
+---
+
+**Next step: [Train the AI on your content →](./train-ai)**

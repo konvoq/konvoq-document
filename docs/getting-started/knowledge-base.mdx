@@ -1,0 +1,73 @@
+---
+sidebar_position: 3
+title: Knowledge Base Overview
+description: Understand how Konvoq finds and uses the right answer for every question.
+---
+
+# Knowledge Base Overview 📚
+
+When a visitor asks Konvoq a question, the AI doesn't guess — it searches through everything you've taught it and picks the most relevant content before forming an answer.
+
+Here's exactly how that works.
+
+---
+
+## How Konvoq finds the right answer
+
+Think of it like a really good librarian. When someone walks in and asks a question, the librarian:
+
+1. **Listens carefully** to understand what the visitor really wants
+2. **Checks the FAQ shelf** — if there's an exact match, they hand that over immediately
+3. **Searches the stacks** — if not, they look through all your docs and web pages for the most relevant passages
+4. **Gives a clear answer** — using the retrieved content as their source, not their imagination
+
+```
+Visitor message
+      ↓
+  Intent classification
+      ↓
+  FAQ exact match? ──── Yes ──→ Return FAQ answer
+      ↓ No
+  Semantic search (all content)
+      ↓
+  OpenAI generates final answer using found context
+```
+
+---
+
+## Content types and when to use each
+
+| Source | Best for | Priority |
+|--------|----------|----------|
+| **FAQs** | Single definitive answers | 🥇 Checked first |
+| **Documents** | Long-form guides, policies, manuals | 🥈 Searched after FAQs |
+| **Scraped pages** | Website content, product pages, blogs | 🥈 Same as documents |
+| **Text entries** | Short facts — hours, address, pricing | 🥈 Same as documents |
+
+---
+
+## What is "semantic search"?
+
+Normal search looks for exact words. Semantic search understands *meaning*.
+
+So if your docs say *"We offer a 30-day money-back guarantee"* and a visitor asks *"Can I get a refund?"*, Konvoq connects those two — even though the words are different.
+
+---
+
+## Keeping your knowledge fresh
+
+The AI only knows what's currently indexed. If you update your website or docs:
+
+- **Re-scrape** the updated pages in Knowledge → Scraped Pages → Re-scrape
+- **Re-upload** updated documents — delete the old version first
+- **Update or delete** outdated FAQs
+
+Stale content = stale answers. A quick re-scrape after any major update keeps Konvoq accurate.
+
+---
+
+## Vector storage
+
+Every piece of content you add gets converted into a **vector** — a mathematical representation that makes semantic search possible. Your plan includes a vector storage limit.
+
+Go to **Dashboard → Usage** to see how much of your quota you've used. If you're running low, delete outdated scraped pages to free up space.

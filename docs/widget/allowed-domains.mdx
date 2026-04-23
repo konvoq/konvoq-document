@@ -1,0 +1,53 @@
+---
+sidebar_position: 4
+title: Allowed Domains
+description: Lock your widget to specific domains so only your site can use your widget key.
+---
+
+# Allowed Domains 🔒
+
+Your Widget Key is embedded in your site's HTML — which means anyone who finds it could technically add it to _their_ site. Allowed domains prevent this by making sure your widget only loads on domains you approve.
+
+Configure this at **[Dashboard → Widget → Settings → Security](https://app.konvoq.com)**.
+
+---
+
+## Why this matters
+
+Without domain restrictions, someone could copy your snippet, paste it on their site, and their visitors' conversations would show up in _your_ inbox. That's confusing and messy.
+
+With allowed domains set, any request from an unapproved domain is blocked before it reaches Konvoq.
+
+---
+
+## Setting allowed domains
+
+1. Go to **Widget → Settings → Security**
+2. Under **Allowed Domains**, type your domain — e.g. `yoursite.com`
+3. Click **Add**
+4. **Save**
+
+From that point on, the widget only loads on pages hosted on `yoursite.com`.
+
+---
+
+## Wildcard subdomains
+
+Use `*.yoursite.com` to allow all subdomains automatically:
+
+| Pattern          | Matches                                                     |
+| ---------------- | ----------------------------------------------------------- |
+| `yoursite.com`   | `yoursite.com` only                                         |
+| `*.yoursite.com` | `app.yoursite.com`, `docs.yoursite.com`, `www.yoursite.com` |
+
+---
+
+## Local development is always allowed
+
+`localhost` and `127.0.0.1` are **never blocked**, regardless of your allowed domains setting. This means your team can always develop and test locally without changing the configuration.
+
+---
+
+:::warning Don't forget this before going live
+Setting allowed domains is part of the [Go-Live Checklist](../getting-started/go-live-checklist). If you skip it, your widget key is unprotected.
+:::

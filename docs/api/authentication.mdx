@@ -1,0 +1,96 @@
+---
+sidebar_position: 1
+title: Authentication
+description: How to authenticate requests to the Konvoq API.
+---
+
+# Authentication 🔑
+
+Konvoq uses two types of credentials depending on what you're doing:
+
+| Credential     | Used for                                       |
+| -------------- | ---------------------------------------------- |
+| **Widget Key** | Loading the widget on your site (frontend)     |
+| **CSRF Token** | Making API requests that change data (backend) |
+
+---
+
+## Your Widget Key
+
+The Widget Key is how the chat bubble on your website identifies itself to Konvoq. It tells the Konvoq CDN which workspace to load, which knowledge base to use, and which settings to apply.
+
+**Find your key:** Dashboard → Widget → Settings → Widget Key
+
+```html
+<!-- Your key goes in the embed snippet -->
+<script>
+  (function (w, d, k) {
+    w.KonvoqKey = k;
+    var s = d.createElement("script");
+    s.src = "https://cdn.konvoq.com/widget.js";
+    s.async = true;
+    d.head.appendChild(s);
+  })(window, document, "YOUR_WIDGET_KEY");
+</script>
+```
+
+:::note Is it safe to expose the Widget Key?
+Yes — your Widget Key is designed to be public. It only allows loading the widget. Use [Allowed Domains](../widget/allowed-domains) to prevent unauthorized sites from using your key.
+:::
+
+---
+
+## API base URL
+
+```
+https://app.konvoq.com
+```
+
+---
+
+## CSRF tokens (mutating requests)
+
+All API requests that change data — `POST`, `PUT`, `PATCH`, `DELETE` — require a CSRF token to prevent cross-site request forgery attacks.
+
+### Step 1 — Fetch a CSRF token
+
+```http
+GET https://app.konvoq.com/auth/csrf-token
+```
+
+Response:
+
+```json
+{ "csrfToken": "csrf_abc123xyz" }
+```
+
+### Step 2 — Include it in your request header
+
+```http
+X-CSRF-Token: csrf_abc123xyz
+```
+
+CSRF tokens expire after a short period. If you get a `403 Forbidden` response, fetch a fresh token and retry.
+
+---
+
+## Error responses
+
+All API errors follow this format:
+
+```json
+{
+  "error": "Unauthorized",
+  "message": "CSRF token missing or invalid",
+  "status": 403
+}
+```
+
+| Status | Meaning                               |
+| ------ | ------------------------------------- |
+| `400`  | Bad request — check your request body |
+| `401`  | Not authenticated                     |
+| `403`  | CSRF token missing or invalid         |
+| `404`  | Resource not found                    |
+| `429`  | Rate limit exceeded — slow down       |
+| `500`  | Server error — contact support        |

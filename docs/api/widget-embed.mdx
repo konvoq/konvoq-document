@@ -1,0 +1,110 @@
+---
+sidebar_position: 2
+title: Widget Embed Reference
+description: Full reference for embedding and controlling the Konvoq widget programmatically.
+---
+
+# Widget Embed Reference 🔧
+
+This page covers everything you can do with the Konvoq widget beyond the basic embed snippet — programmatic control, visitor identity, and embed options.
+
+---
+
+## Minimal embed
+
+The simplest possible installation:
+
+```html
+<script>
+  (function (w, d, k) {
+    w.KonvoqKey = k;
+    var s = d.createElement("script");
+    s.src = "https://cdn.konvoq.com/widget.js";
+    s.async = true;
+    d.head.appendChild(s);
+  })(window, document, "YOUR_WIDGET_KEY");
+</script>
+```
+
+Place this before the closing `</body>` tag. Replace `YOUR_WIDGET_KEY` with your key from the dashboard.
+
+---
+
+## Controlling the widget programmatically
+
+After the widget loads, a `window.Konvoq` object becomes available. Use it to open, close, or toggle the chat from your own code:
+
+```javascript
+// Open the chat bubble
+window.Konvoq?.open();
+
+// Close it
+window.Konvoq?.close();
+
+// Toggle open/closed
+window.Konvoq?.toggle();
+```
+
+The `?.` (optional chaining) prevents errors if the widget hasn't loaded yet.
+
+**Example use case:** Add a "Chat with us" button anywhere on your page:
+
+```html
+<button onclick="window.Konvoq?.open()">Chat with us</button>
+```
+
+---
+
+## Passing visitor identity
+
+If you know who the visitor is (e.g. they're logged into your app), pre-fill their details so Konvoq's lead capture form is already completed:
+
+```javascript
+// Set this BEFORE the widget script loads
+window.KonvoqConfig = {
+  visitorEmail: "user@example.com",
+  visitorName: "Jane Doe",
+};
+```
+
+When the widget loads, it will:
+
+- Skip asking for the visitor's email during lead capture
+- Automatically associate the conversation with that email in your Leads dashboard
+
+:::warning Set KonvoqConfig before the widget script
+`window.KonvoqConfig` must be set before the widget script runs. If you set it after, the widget may have already initialized and won't pick up the values.
+:::
+
+---
+
+## Widget load events
+
+Listen for widget lifecycle events using standard DOM events:
+
+```javascript
+window.addEventListener("konvoq:ready", () => {
+  console.log("Widget loaded and ready");
+});
+
+window.addEventListener("konvoq:open", () => {
+  console.log("Chat opened");
+});
+
+window.addEventListener("konvoq:close", () => {
+  console.log("Chat closed");
+});
+```
+
+---
+
+## Complete configuration reference
+
+```javascript
+window.KonvoqConfig = {
+  visitorEmail: "user@example.com", // Pre-fill visitor email
+  visitorName: "Jane Doe", // Pre-fill visitor name
+};
+```
+
+Set `window.KonvoqConfig` before the embed script runs.

@@ -1,0 +1,84 @@
+---
+sidebar_position: 1
+title: Webhooks
+description: Send Konvoq events to your backend or any external system in real time.
+---
+
+# Webhooks 🔗
+
+Webhooks let Konvoq **push data to you** the moment something happens — a new lead, a new conversation, a handoff request. Instead of you asking _"did anything happen?"_ repeatedly, Konvoq taps you on the shoulder automatically.
+
+Set up webhooks at **[Dashboard → Integrations → Webhooks](https://app.konvoq.com)**.
+
+---
+
+## Setting up a webhook
+
+1. Go to **Integrations → Webhooks**
+2. Click **Add Webhook**
+3. Enter your **endpoint URL** — must be `https://` (HTTP is not accepted)
+4. Select the **events** you want to subscribe to
+5. Click **Save** — Konvoq immediately sends a test request to verify your endpoint responds
+
+---
+
+## Available events
+
+| Event                  | When it fires                          |
+| ---------------------- | -------------------------------------- |
+| `lead.created`         | A visitor's name/email was captured    |
+| `conversation.started` | A new conversation was opened          |
+| `handoff.requested`    | Visitor asked for a human              |
+| `handoff.closed`       | An agent closed a handoff conversation |
+
+---
+
+## Payload format
+
+Every webhook request is an HTTP POST with a JSON body:
+
+```json
+{
+  "event": "lead.created",
+  "timestamp": "2025-04-23T10:00:00Z",
+  "data": {
+    "email": "visitor@example.com",
+    "name": "Jane Doe",
+    "conversationId": "conv_abc123"
+  }
+}
+```
+
+---
+
+## Verifying requests are from Konvoq
+
+Every request includes an `X-Konvoq-Signature` header — an HMAC-SHA256 signature computed from the raw request body using your webhook secret.
+
+**Always verify this signature** before processing the payload. This prevents someone from faking a webhook request to your endpoint.
+
+```javascript
+const crypto = require("crypto");
+
+function verifySignature(body, signature, secret) {
+  const expected = crypto
+    .createHmac("sha256", secret)
+    .update(body)
+    .digest("hex");
+  return `sha256=${expected}` === signature;
+}
+```
+
+---
+
+## Retries
+
+If your endpoint returns a non-2xx response, Konvoq retries the delivery:
+
+- Up to **20 retry attempts**
+- **Exponential backoff** — retries spread over ~2 hours
+- After 20 failures, the event is marked as permanently failed
+
+:::tip Respond fast, process later
+Your endpoint should return `200 OK` immediately, then process the payload asynchronously. If your handler takes more than 10 seconds, Konvoq treats it as a failure.
+:::

@@ -1,0 +1,47 @@
+---
+sidebar_position: 2
+title: CRM Fields
+description: Customize what contact information Konvoq collects from leads.
+---
+
+# CRM Fields 🗂️
+
+CRM Fields control what information Konvoq collects when it captures a lead during a conversation.
+
+Configure these at **[Dashboard → Leads → CRM Settings](https://app.konvoq.com)**.
+
+---
+
+## Default fields
+
+Out of the box, Konvoq collects:
+
+| Field     | Type              | Required |
+| --------- | ----------------- | -------- |
+| **Name**  | Text              | Optional |
+| **Email** | Email (validated) | Required |
+
+The email field is always required — it's the primary identifier for a lead.
+
+---
+
+## How fields are collected
+
+Konvoq asks for information conversationally — not as a rigid form. The AI works the fields into the conversation naturally:
+
+> _"What's your name?"_
+> _"And what's the best email to reach you at?"_
+
+This feels much less intrusive than stopping the conversation to fill out a form.
+
+---
+
+## Exporting leads with field data
+
+All collected field data is included in the CSV export from **Leads → Export**. Each column corresponds to a field — making it easy to import into any CRM or spreadsheet.
+
+---
+
+:::info Connecting to HubSpot
+If you use HubSpot, you can map Konvoq fields directly to HubSpot contact properties. See the [HubSpot Integration](../integrations/hubspot) page for setup.
+:::

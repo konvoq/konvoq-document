@@ -1,0 +1,59 @@
+---
+sidebar_position: 3
+title: Follow-Up Emails
+description: Automatically send a follow-up email to leads after their conversation ends.
+---
+
+# Follow-Up Emails ✉️
+
+After a visitor leaves a conversation, Konvoq can automatically send them a follow-up email — a friendly nudge that keeps your business top of mind.
+
+Set this up at **[Dashboard → Leads → Follow-Up](https://app.konvoq.com)**.
+
+---
+
+## Why follow-up emails matter
+
+Most visitors who chat with your widget won't convert on their first visit. A well-timed follow-up email — sent automatically, with no effort from your team — gives them a reason to come back.
+
+---
+
+## Enabling follow-up emails
+
+1. Go to **Leads → Follow-Up**
+2. Toggle **Auto Follow-Up** on
+3. Set the **delay** — how long after the conversation ends before the email is sent
+   - 30 minutes works well for most use cases
+   - Use a longer delay (e.g. 2 hours) for technical support conversations
+4. Customize the **email subject** and **body**
+5. Save
+
+---
+
+## Template variables
+
+Personalize the email with variables that Konvoq fills in automatically:
+
+| Variable    | What it inserts                   |
+| ----------- | --------------------------------- |
+| `{{name}}`  | The visitor's name (if collected) |
+| `{{email}}` | The visitor's email address       |
+
+**Example subject:** `Hi {{name}}, here's a recap from our chat`
+
+**Example body:**
+
+```
+Hi {{name}},
+
+Thanks for chatting with us today! If you have any more questions,
+just reply to this email — we're happy to help.
+
+The team at [Your Company]
+```
+
+---
+
+:::tip Keep follow-up emails short
+A 3–4 line email that feels personal gets far better responses than a long marketing email. The goal is to open a door, not close a sale.
+:::

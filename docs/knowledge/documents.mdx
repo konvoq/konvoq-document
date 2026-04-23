@@ -1,0 +1,74 @@
+---
+sidebar_position: 1
+title: Documents
+description: Upload PDF, DOCX, TXT, and spreadsheet files to train the Konvoq AI.
+---
+
+# Documents 📄
+
+Documents are files you upload directly to Konvoq. The AI reads through them, breaks the content into small chunks, and uses those chunks to answer visitor questions.
+
+Manage your documents at **[Dashboard → Knowledge → Documents](https://app.konvoq.com)**.
+
+---
+
+## Supported file formats
+
+| Format         | Notes                                                    |
+| -------------- | -------------------------------------------------------- |
+| **PDF**        | Most common — works great for manuals, guides, policies  |
+| **DOCX**       | Microsoft Word documents                                 |
+| **TXT**        | Plain text files                                         |
+| **CSV**        | Spreadsheets — useful for product catalogs, FAQs in bulk |
+| **XLSX / XLS** | Excel spreadsheets                                       |
+
+**Maximum file size:** 10 MB per file
+
+---
+
+## How uploading works
+
+1. Go to **Knowledge → Documents**
+2. Click **Upload**
+3. Select your file
+
+Behind the scenes, Konvoq:
+
+1. Extracts all readable text from the file
+2. Splits it into chunks of roughly 300 tokens each (about 1–2 paragraphs)
+3. Converts each chunk into a vector embedding
+4. Stores the vectors in your knowledge index
+
+From this point on, the AI can search across every chunk when answering questions.
+
+---
+
+## What makes a good document?
+
+✅ **Good to upload:**
+
+- Help center articles
+- Product manuals
+- Terms of service / privacy policy
+- Internal training materials
+- FAQ lists in document form
+
+❌ **Skip these:**
+
+- Scanned PDFs with no selectable text (Konvoq can't read image-only PDFs)
+- Files with mostly tables and no prose — spreadsheet data is better added as text entries
+- Very large files over 10 MB — split them first
+
+---
+
+## Managing documents
+
+| Action          | How                                                               |
+| --------------- | ----------------------------------------------------------------- |
+| **Re-upload**   | Delete the old version first, then upload the new file            |
+| **Delete**      | Click the trash icon — removes the file and all its vector chunks |
+| **Check usage** | Dashboard → Usage → Vector Storage                                |
+
+:::info Deleting a document frees up vector storage
+If you're near your plan's vector limit, deleting outdated documents is the fastest way to reclaim space.
+:::

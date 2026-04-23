@@ -1,0 +1,69 @@
+---
+sidebar_position: 1
+title: Flow Builder
+description: Design structured conversation paths — guide visitors step by step instead of open-ended chat.
+---
+
+# Flow Builder 🔀
+
+Open-ended AI chat is great for answering questions. But sometimes you want to **guide** a visitor through a specific path — like a doctor asking a patient a series of questions before making a diagnosis.
+
+That's what Flows are for.
+
+---
+
+## What is a Flow?
+
+A Flow is a conversation you design in advance — a sequence of steps the assistant follows, in order, when a visitor matches your trigger.
+
+**Examples of what you can build:**
+
+- _"What brings you here today?"_ → routes to support, sales, or docs based on answer
+- A lead qualification funnel that asks company size, role, and budget before handing off to sales
+- A booking request that collects date, time, and contact info step by step
+- A support triage that categorizes the issue before escalating to a human
+
+---
+
+## Creating a flow
+
+1. Go to **[Dashboard → Flows](https://app.konvoq.com)**
+2. Click **New Flow**
+3. Give it a name (internal only — visitors don't see it)
+4. Add steps and connect them with arrows
+5. Set a trigger
+6. Click **Activate**
+
+---
+
+## Step types
+
+| Step type        | What it does                                                |
+| ---------------- | ----------------------------------------------------------- |
+| **Message**      | Assistant sends a message — no reply required               |
+| **Question**     | Assistant asks something and waits for the visitor's answer |
+| **Condition**    | Branches the flow based on the visitor's answer             |
+| **Lead Capture** | Asks for the visitor's name and email                       |
+| **Handoff**      | Transfers the conversation to a live agent                  |
+
+---
+
+## Flow triggers
+
+A flow activates when:
+
+| Trigger           | Example                                           |
+| ----------------- | ------------------------------------------------- |
+| **First message** | Flow starts as soon as any visitor opens the chat |
+| **Keyword match** | Visitor says "pricing" or "demo"                  |
+| **Page URL**      | Visitor is on `/pricing` or `/contact`            |
+
+---
+
+## Active flow limits
+
+Your plan determines how many flows can be active at the same time. Check **Dashboard → Usage → Active Flows** for your current count and limit.
+
+:::tip Start simple
+Build your first flow with just 2–3 steps. Get it working, watch how visitors interact with it, then add complexity. A simple flow that runs reliably is worth more than a complicated one visitors abandon.
+:::

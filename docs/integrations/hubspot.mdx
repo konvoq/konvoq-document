@@ -1,0 +1,59 @@
+---
+sidebar_position: 2
+title: HubSpot Integration
+description: Automatically create or update HubSpot contacts when Konvoq captures a lead.
+---
+
+# HubSpot Integration 🟠
+
+Connect Konvoq to HubSpot and every lead captured in a conversation automatically appears as a contact in your CRM — no copy-pasting, no manual entry.
+
+Set this up at **[Dashboard → Integrations → HubSpot](https://app.konvoq.com)**.
+
+---
+
+## Connecting HubSpot
+
+1. Go to **Integrations → HubSpot**
+2. Click **Connect HubSpot**
+3. You'll be redirected to HubSpot's OAuth authorization page — sign in and approve access
+4. Return to Konvoq and **map fields**:
+   - Konvoq `email` → HubSpot `Email`
+   - Konvoq `name` → HubSpot `First Name`
+5. Click **Save** — leads will now sync automatically
+
+---
+
+## What syncs to HubSpot
+
+When Konvoq captures a lead, it creates or updates a contact in HubSpot with:
+
+| Konvoq field            | HubSpot property                 |
+| ----------------------- | -------------------------------- |
+| Visitor email           | Email                            |
+| Visitor name            | First name                       |
+| Conversation source URL | Website URL (or custom property) |
+| Lead captured at        | Create date                      |
+
+If a contact with that email already exists in HubSpot, Konvoq updates it rather than creating a duplicate.
+
+---
+
+## Disconnecting HubSpot
+
+Go to **Integrations → HubSpot → Disconnect**. Leads already synced remain in HubSpot — only future syncs stop.
+
+---
+
+## Troubleshooting
+
+If a lead doesn't appear in HubSpot:
+
+1. Go to **Integrations → HubSpot → Sync Log**
+2. Find the failed sync entry and read the error message
+
+| Common error         | Fix                                                                                                               |
+| -------------------- | ----------------------------------------------------------------------------------------------------------------- |
+| `Duplicate contact`  | HubSpot has a contact with a slightly different email casing — check for `Jane@example.com` vs `jane@example.com` |
+| `Auth expired`       | Reconnect HubSpot — the OAuth token may have expired                                                              |
+| `Property not found` | The mapped HubSpot property was renamed or deleted — remap it                                                     |

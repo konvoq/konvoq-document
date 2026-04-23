@@ -1,0 +1,59 @@
+---
+sidebar_position: 1
+title: Usage & Limits
+description: Understand what your plan includes and how to monitor your current usage.
+---
+
+# Usage & Limits 📊
+
+Every Konvoq plan includes limits on how much you can use certain features. This page explains what's tracked and what happens when you get close to a limit.
+
+Go to **[Dashboard → Usage](https://app.konvoq.com)** to see your current numbers.
+
+---
+
+## What's tracked
+
+| Metric             | What it counts                                  |
+| ------------------ | ----------------------------------------------- |
+| **Conversations**  | Total conversations started this billing period |
+| **Vector storage** | Number of knowledge chunks stored in your index |
+| **Scraped pages**  | Website pages currently indexed                 |
+| **Team seats**     | Active team members in your workspace           |
+| **Active flows**   | Number of live conversation flows               |
+
+---
+
+## Understanding vector storage
+
+When you add content to your knowledge base (documents, FAQs, scraped pages), Konvoq converts each piece into a **vector** — a mathematical representation that makes semantic search possible.
+
+Each chunk of content uses one vector slot. A typical document might produce 20–50 vectors. A large website scrape might produce several thousand.
+
+Your plan includes a vector storage limit. When you're near the limit:
+
+- The usage page shows a warning banner
+- The AI keeps working until you hit the hard limit
+- You can free up space by deleting outdated scraped pages or documents
+
+---
+
+## What happens at the limit?
+
+| Metric         | At the limit                                                |
+| -------------- | ----------------------------------------------------------- |
+| Conversations  | New conversations are queued or blocked (depending on plan) |
+| Vector storage | New content can't be indexed until space is freed           |
+| Scraped pages  | New scrape jobs are blocked                                 |
+| Team seats     | New invitations are blocked                                 |
+| Active flows   | No new flows can be activated                               |
+
+---
+
+## Upgrading your plan
+
+Go to **Account → Billing** to see available plans and upgrade. Changes take effect immediately — new limits apply as soon as payment is confirmed.
+
+:::tip Delete before you upgrade
+Before upgrading just to get more vector storage, check if you have old scraped pages from before a major redesign. Deleting stale content is free and often frees up significant space.
+:::

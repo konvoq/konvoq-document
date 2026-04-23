@@ -1,0 +1,67 @@
+---
+sidebar_position: 1
+title: Live Handoff
+description: Jump into any AI conversation and take over as a real human agent.
+---
+
+# Live Handoff 🤝
+
+Sometimes a visitor needs a real human — not an AI. Live Handoff lets your team jump into any conversation and take it over, in real time, directly from the Konvoq dashboard.
+
+---
+
+## How it works — step by step
+
+```
+1. Visitor types something that triggers handoff
+       ↓
+2. AI detects handoff intent and notifies your team
+       ↓
+3. Team member sees the alert in Dashboard → Inbox
+       ↓
+4. They click "Claim" to take over the conversation
+       ↓
+5. They chat live with the visitor (real-time WebSocket)
+       ↓
+6. When resolved, they click "Close"
+```
+
+The visitor sees a smooth transition — the AI lets them know a team member is joining.
+
+---
+
+## What triggers a handoff?
+
+Handoffs can be triggered in three ways:
+
+| Trigger | Example |
+|---------|---------|
+| **Visitor request** | *"I want to talk to a real person"*, *"Can I speak to support?"* |
+| **AI detection** | The AI senses frustration, complexity, or a topic outside its knowledge |
+| **Flow step** | A [Flow](../flows/flow-builder) you've built explicitly routes to human support |
+
+---
+
+## Taking over in the Inbox
+
+1. Go to **Dashboard → Inbox**
+2. Conversations waiting for a human show status `Pending`
+3. Click **Claim** to assign the conversation to yourself
+4. Type and send messages — the visitor receives them instantly
+5. When done, click **Close Conversation**
+
+---
+
+## Real-time presence indicators
+
+The Inbox shows you whether the visitor is still active:
+
+- 🟢 **Online** — visitor has the chat open right now
+- 💬 **Typing** — visitor is currently typing
+- ⚫ **Offline** — visitor has left the page (your messages are saved for when they return)
+
+---
+
+## After the handoff is closed
+
+The full conversation — including both the AI's messages and yours — is saved in the Inbox. It's searchable and can be reviewed at any time.
